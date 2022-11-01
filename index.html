@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
+        crossorigin="anonymous"></script>
+    <style>
+        
+        
+        p {
+            cursor: pointer;
+
+        }
+
+        p:hover {
+            text-decoration: underline;
+        }
+
+       
+        
+        
+    </style>
+    <script>
+        var info = {
+            "Username": "guru@gmail.com",
+            "pass": "guru"
+        };
+        var success = "Login success".fontcolor('green').fontsize('100px');
+        
+
+        function btnclick() {
+            var username = document.getElementById("textusername").value;
+            var erroruser = document.getElementById("errorusername");
+            var errorpass = document.getElementById("errorpass");
+            var password = document.getElementById("textpass").value;
+
+            if (info.Username == username) {
+                erroruser.innerHTML = "";
+                if (info.pass == password) {
+                    
+                    document.write(success);
+
+                }
+                else {
+                    errorpass.innerHTML = "invalid password"
+                }
+            }
+            else {
+                erroruser.innerHTML = "invalid username"
+            }
+
+
+
+
+
+
+        }
+        function changeidpass() {
+
+            // var changeidpass = document.getElementById("changeuser");
+            document.getElementById("show").style.display = "block";
+            var Cuseer = document.getElementById("cuser").value;
+            var Cpass = document.getElementById("cpass").value;
+            console.log(Cuseer);
+            info.Username = Cuseer;
+            info.pass = Cpass;
+
+
+        }
+    </script>
+
+    <title>login form</title>
+</head>
+
+<body>
+    <div class="container mt-4 border p-4" id="contain">
+        <h3 class="text-center text-danger mb-3">Login form</h3>
+        <dl>
+            <dt>User name</dt>
+            <dd><input class="form-control" type="text" id="textusername"></dd>
+            <dd id="errorusername" class="text-danger"></dd>
+            <dt>password</dt>
+            <dd><input class="form-control" type="password" name="pass" id="textpass"></dd>
+            <dd id="errorpass" class="text-danger"></dd>
+            <dd>
+                <p data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="changeidpass()" id="changeuser"
+                    class="text-primary">change id pass</p>
+            </dd>
+            <button onclick="btnclick()" class="btn btn-outline-warning mt-3">Log in</button>
+            <dt class="text-danger text-center mt-4 fs-3">If you don't know id pass you can change it and use.</dt>
+
+        </dl>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-primary" id="exampleModalLabel">Create new id pass</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="show" class="container w-50 mt-4">
+                        <h4 class="text-center text-danger mb-3">* create new id pass *</h4>
+                        <dl>
+                            <dt>New User name</dt>
+                            <dd><input class="form-control" type="text" value="" id="cuser"></dd>
+
+                            <dt>New password</dt>
+                            <dd><input class="form-control" type="password" name="pass" id="cpass"></dd>
+
+
+                            <button onclick="changeidpass()" class="btn btn-outline-primary"
+                                data-bs-dismiss="modal">Submit</button>
+
+                        </dl>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-danger" onclick="changeidpass()" data-bs-dismiss="modal">Save
+                        changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
